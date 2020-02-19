@@ -5,32 +5,41 @@ import java.util.*;
 import com.skilldistillery.blackjack.cards.Card;
 
 public abstract class Hand {
-	
-	private List<Card> cards;
-	
+	// FIELDS
+
+	protected List<Card> cards;
+
+	// METHODS
+
 	public Hand() {
-	cards = new ArrayList<Card>();
+		setCards(new ArrayList<Card>());
 	}
-	
+
 	public void addCard(Card card) {
-		cards.add(card);
+		getCards().add(card);
 	}
-	
+
 	public void clear() {
-		cards = new ArrayList<Card>();
+		setCards(new ArrayList<Card>());
 	}
-	
+
 	public abstract int getHandValue();
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Hand [cards=");
-		builder.append(cards);
-		builder.append("]");
+		// builder.append("Hand [cards=");
+		builder.append(getCards());
+		// builder.append("]");
 		return builder.toString();
 	}
-	
-		
+
+	public List<Card> getCards() {
+		return cards;
 	}
 
+	public void setCards(List<Card> cards) {
+		this.cards = cards;
+	}
+
+}

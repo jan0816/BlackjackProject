@@ -1,23 +1,40 @@
 package com.skilldistillery.blackjack.hand;
 
-public class BlackjackHand extends Hand {
+import com.skilldistillery.blackjack.cards.Card;
 
+public class BlackjackHand extends Hand {
+	// FIELDS
+
+	// METHODS
+
+	// ctor
 	public BlackjackHand() {
 		super();
-		// TODO Auto-generated constructor stub
-	}
-	@Override
-	public int getHandValue() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	public boolean isBlackjack() {
-		return false;
-		
-	}
-	public boolean isBust() {
-		return false;
 	}
 
+	@Override
+	public int getHandValue() {
+		int handValue = 0;
+		for (Card card : getCards()) {
+			handValue += card.getValue();
+		}
+		return handValue;
+	}
+
+	public boolean isBlackjack() {
+
+		if (this.getHandValue() == 21) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean isBust() {
+		if (this.getHandValue() > 21) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
